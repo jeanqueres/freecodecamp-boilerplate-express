@@ -24,7 +24,6 @@ app.use(function middleware(req, res, next) {
 });
 
 app.get('/', (req, res) => {
-    console.log('teste')
     const absolutePath = __dirname + '/views/index.html'
     res.sendFile(absolutePath);
 })
