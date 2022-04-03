@@ -2,6 +2,8 @@ var express = require('express');
 require('dotenv').config();
 var app = express();
 
+const bodyParser = require('body-parser');
+
 /* 
 // Meet the Node console
 console.log("Hello World");
@@ -22,6 +24,8 @@ app.use(function middleware(req, res, next) {
     console.log(req.method + ' ' + req.path + ' - ' + req.ip);
     next();
 });
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 app.get('/', (req, res) => {
     const absolutePath = __dirname + '/views/index.html'
@@ -56,6 +60,12 @@ app.route('/name')
 .get((req, res, next) => {
     let data = req.query;
     res.json({'name': data.first + ' ' + data.last});
-})
+});
+// Use body-parser to Parse POST Requests
+// .post((req, res, next) => {
+//     let data = req.query;
+//     res.json({'name': data.first + ' ' + data.last});
+// })
+
 
 module.exports = app;
