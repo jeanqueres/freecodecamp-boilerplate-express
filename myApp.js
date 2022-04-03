@@ -24,6 +24,7 @@ app.use((req, res) => {
 });
 
 app.get('/', (req, res) => {
+    console.log('teste')
     const absolutePath = __dirname + '/views/index.html'
     res.sendFile(absolutePath);
 })
