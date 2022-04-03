@@ -63,7 +63,7 @@ app.route('/name')
 })
 // Use body-parser to Parse POST Requests
 .post((req, res, next) => {
-    let data = req.query;
+    let data = req.body;
     res.json({'name': data.first + ' ' + data.last});
 })
 
