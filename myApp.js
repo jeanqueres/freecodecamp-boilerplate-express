@@ -52,11 +52,10 @@ app.get('/:word/echo', (req, res, next) => {
 })
 
 // Get Query Parameter Input from the Client
-app.get('/name', (req, res, next) => {
+app.route('/name')
+.get((req, res, next) => {
     let data = req.query;
-    res.json({ data: data });
-    // let [first, last] = app.route('/name').get(handler).post(handler);
-    // res.json({'name': first + ' ' + last});
+    res.json({'name': data.first + ' ' + data.last});
 })
 
 module.exports = app;
