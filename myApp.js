@@ -21,13 +21,20 @@ app.get('/', (req, res) => {
 })
 */
 
-
 // Serve Static Assets
+app.use('/public', express.static(__dirname + '/public'));
+
 app.get('/', (req, res) => {
     const absolutePath = __dirname + '/views/index.html'
     res.sendFile(absolutePath);
 })
 
-app.use('/public', express.static(__dirname + '/public'));
+// Serve JSON on a Specific Route
+app.get('/json', (req, res) => {
+    res.json({
+        "message": "Hello json"
+    })
+})
+
 
 module.exports = app;
