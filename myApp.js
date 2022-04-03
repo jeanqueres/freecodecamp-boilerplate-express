@@ -38,5 +38,10 @@ app.get('/json', (req, res) => {
     })
 })
 
+// Chain Middleware to Create a Time Server
+app.get('/now', (req, res) => {
+    req.time = new Date().toString();
+    res.json({time: req.time});
+})
 
 module.exports = app;
