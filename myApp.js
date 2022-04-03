@@ -60,12 +60,12 @@ app.route('/name')
 .get((req, res, next) => {
     let data = req.query;
     res.json({'name': data.first + ' ' + data.last});
-});
+})
 // Use body-parser to Parse POST Requests
-// .post((req, res, next) => {
-//     let data = req.query;
-//     res.json({'name': data.first + ' ' + data.last});
-// })
+.post((req, res, next) => {
+    let data = req.query;
+    res.json({'name': data.first + ' ' + data.last});
+})
 
 
 module.exports = app;
