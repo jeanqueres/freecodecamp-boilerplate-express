@@ -26,7 +26,7 @@ app.use(function middleware(req, res, next) {
 app.get('/', (req, res) => {
     const absolutePath = __dirname + '/views/index.html'
     res.sendFile(absolutePath);
-})
+});
 
 // Serve JSON on a Specific Route
 app.get('/json', (req, res) => {
@@ -36,7 +36,7 @@ app.get('/json', (req, res) => {
                     message.toUpperCase() : 
                     message
     })
-})
+});
 
 // Chain Middleware to Create a Time Server
 app.get('/now', (req, res, next) => {
@@ -44,6 +44,11 @@ app.get('/now', (req, res, next) => {
     next();
 }, (req, res) => {
     res.json({time: req.time});
+});
+
+// Get Route Parameter Input from the Client
+app.get('/:word/echo', (req, res, next) => {
+    res.json({'echo': req.params.word});   
 })
 
 module.exports = app;
