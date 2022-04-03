@@ -14,13 +14,11 @@ app.get('/', (req, res) => {
 })
 */
 
-/*
-// Serve an HTML File
-app.get('/', (req, res) => {
-    const absolutePath = __dirname + '/views/index.html'
-    res.sendFile(absolutePath);
-})
-*/
+// Implement a Root-Level Request Logger Middleware
+app.use((req, res) => {
+    console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+    next();
+});
 
 // Serve Static Assets
 app.use('/public', express.static(__dirname + '/public'));
